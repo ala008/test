@@ -1,0 +1,95 @@
+################################################################################
+# 3.1.1. Faktoriál pomocí for
+################################################################################
+def factorial(n):
+    fak = 1
+    for i in range(2, n + 1):
+        fak *= i
+    return fak
+
+print(factorial(0))      # 1
+print(factorial(1))      # 1
+print(factorial(10))     # 3628800
+print(factorial(50))
+# 30414093201713378043612608166064768844377641568960512000000000000
+
+################################################################################
+# 3.1.2 Faktoriál pomocí while
+################################################################################
+def factorial(n):
+    i = 1
+    fak = 1
+    while ( i < n ):
+        i += 1
+        fak *= i
+    return fak
+
+print(factorial(0))      # 1
+print(factorial(1))      # 1
+print(factorial(10))     # 3628800
+print(factorial(50))
+# 30414093201713378043612608166064768844377641568960512000000000000
+
+################################################################################
+# 3.1.3 Ciferný součet
+################################################################################
+def digit_sum(n):
+    soucet = n % 10
+    while (n > 0):
+        n = int( n / 10 )
+        soucet += n % 10
+    return soucet
+
+print(digit_sum(0))              # 0
+print(digit_sum(274))            # 13
+print(digit_sum(123456789))      # 45
+
+################################################################################
+# 3.1.4. Opakovaný ciferný součet
+################################################################################
+def digit_sum(n):
+    soucet = n % 10
+    while (n > 0):
+        n = int( n / 10 )
+        soucet += n % 10
+    return soucet
+
+def repeated_digit_sum(n):
+    while (n > 10): 
+        n = digit_sum(n)
+    return n
+
+print(repeated_digit_sum(123))               # 6
+print(repeated_digit_sum(123456789))         # 9
+print(repeated_digit_sum(99989788879879))    # 7
+
+################################################################################
+# 3.2.1. Dělitelé
+################################################################################
+def divisors(n):
+    for i in range (1, n + 1):
+        if ( n % i == 0):
+            print(i, end= " ")
+    print()
+
+divisors(1)     # 1
+divisors(5)     # 1 5
+divisors(42)    # 1 2 3 6 7 14 21 42
+divisors(127)   # 1 127
+divisors(1024)  # 1 2 4 8 16 32 64 128 256 512 1024
+
+################################################################################
+# 3.2.2. Počet dělitelů
+################################################################################
+def divisors_count(n):
+    cnt = 0
+    for i in range (1, n + 1):
+        if ( n % i == 0):
+            cnt += 1
+    return cnt
+
+print(divisors_count(1))     # 1
+print(divisors_count(5))     # 2
+print(divisors_count(42))    # 8
+print(divisors_count(127))   # 2
+print(divisors_count(1024))  # 11
