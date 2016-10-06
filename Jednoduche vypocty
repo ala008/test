@@ -10,8 +10,7 @@ def factorial(n):
 print(factorial(0))      # 1
 print(factorial(1))      # 1
 print(factorial(10))     # 3628800
-print(factorial(50))
-# 30414093201713378043612608166064768844377641568960512000000000000
+print(factorial(50))     # 30414093201713378043612608166064768844377641568960512000000000000
 
 ################################################################################
 # 3.1.2 Faktoriál pomocí while
@@ -26,8 +25,7 @@ def factorial(n):
 print(factorial(0))      # 1
 print(factorial(1))      # 1
 print(factorial(10))     # 3628800
-print(factorial(50))
-# 30414093201713378043612608166064768844377641568960512000000000000
+print(factorial(50))     # 30414093201713378043612608166064768844377641568960512000000000000
 
 ################################################################################
 # 3.1.3 Ciferný součet
@@ -111,7 +109,7 @@ print(is_prime(127))    # True
 ################################################################################
 # 3.2.4. Prvočísla menší než n
 ################################################################################
-# využijeme funkci z předchozího cvičení
+# Funkce is_prime ze cvičení 3.2.3
 def is_prime(n):
     for i in range (2, n):
         if (n % i == 0):
@@ -126,7 +124,73 @@ def primes_less_than(limit):
 
 primes_less_than(5)      # 2 3
 primes_less_than(15)     # 2 3 5 7 11 13
-primes_less_than(100)
-# 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+primes_less_than(100)    # 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
 
+################################################################################
+# 3.2.5. k-té prvočíslo
+################################################################################
+# Funkce is_prime ze cvičení 3.2.3
+def is_prime(n):
+    for i in range (2, n):
+        if (n % i == 0):
+            return False
+    return True
 
+def kth_prime(k):
+    citac, poradi = 1, 0 
+    while poradi < k:
+        citac += 1
+        if is_prime(citac):
+            poradi += 1
+    return citac
+        
+print(kth_prime(1))      # 2
+print(kth_prime(2))      # 3
+print(kth_prime(10))     # 29
+print(kth_prime(100))    # 541
+
+################################################################################
+# 3.2.6. Prvních k prvočísel
+################################################################################
+# Funkce is_prime ze cvičení 3.2.3
+def is_prime(n):
+    for i in range (2, n):
+        if (n % i == 0):
+            return False
+    return True
+
+def primes(count):
+    citac, poradi = 1, 0 
+    while poradi < count:
+        citac += 1
+        if is_prime(citac):
+            print(citac, end = " ")
+            poradi += 1
+    print()
+
+primes(2)      # 2 3
+primes(5)      # 2 3 5 7 11
+primes(10)     # 2 3 5 7 11 13 17 19 23 29
+
+################################################################################
+# 3.2.7. Prvních k prvočíselných dvojčat
+################################################################################
+# Funkce is_prime ze cvičení 3.2.3
+def is_prime(n):
+    for i in range (2, n):
+        if (n % i == 0):
+            return False
+    return True
+
+def twin_primes(count):
+    citac, poradi = 1, 0 
+    while poradi < count:
+        citac += 1
+        if is_prime(citac) & is_prime(citac+2):
+            poradi += 1
+            print(citac, citac+2, sep="-", end = ", ")
+    print()
+                
+twin_primes(2)      # 3-5, 5-7,
+twin_primes(5)      # 3-5, 5-7, 11-13, 17-19, 29-31,
+twin_primes(10)     # 3-5, 5-7, 11-13, 17-19, 29-31, 41-43, 59-61, 71-73, 101-103, 107-109,
