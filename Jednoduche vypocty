@@ -92,3 +92,19 @@ print(divisors_count(5))     # 2
 print(divisors_count(42))    # 8
 print(divisors_count(127))   # 2
 print(divisors_count(1024))  # 11
+
+################################################################################
+# 3.2.3. Je prvočíslo
+################################################################################
+def is_prime(n):
+    for i in range (2, n):
+        if (n % i == 0):
+            return False
+    return True
+
+print(is_prime(1))      # False (jednička je taky prvočíslo - dávám True)
+print(is_prime(2))      # True
+print(is_prime(3))      # True
+print(is_prime(42))     # False
+print(is_prime(127))    # True
+    
