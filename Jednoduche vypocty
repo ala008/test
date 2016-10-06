@@ -17,8 +17,7 @@ print(factorial(50))
 # 3.1.2 Faktoriál pomocí while
 ################################################################################
 def factorial(n):
-    i = 1
-    fak = 1
+    i, fak = 1, 1
     while ( i < n ):
         i += 1
         fak *= i
