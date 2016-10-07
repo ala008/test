@@ -235,17 +235,16 @@ def is_prime(n):
 
 def power_factorization(n):
     i = 2
-    j = 0
+    j = 0 
     while (n > 1):
         if (is_prime(i)):
             if ( n % i == 0):
                 n = n // i
                 j += 1 
-                print(i, end = " ")
+                print(i, j, sep = "^", end = " ")
             else:
                 i += 1
         else:
-            print(i, j, sep = "^", end = " ")
             i += 1
             j = 0
     print()
