@@ -95,7 +95,7 @@ print(divisors_count(1024))  # 11
 # 3.2.3. Je prvočíslo
 ################################################################################
 def is_prime(n):
-    for i in range (2, n-1):
+    for i in range (2, int(n/2+1)):
         if (n % i == 0):
             return False
     return True
@@ -107,11 +107,11 @@ print(is_prime(42))     # False
 print(is_prime(127))    # True
 
 ################################################################################
-# 3.2.4. Prvočísla menší než n
+# 3.2.4. Prvočísla menší než limit
 ################################################################################
 # Funkce is_prime ze cvičení 3.2.3
 def is_prime(n):
-    for i in range (2, n-1):
+    for i in range (2, int(n/2+1)):
         if (n % i == 0):
             return False
     return True
@@ -131,7 +131,7 @@ primes_less_than(100)    # 2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 
 ################################################################################
 # Funkce is_prime ze cvičení 3.2.3
 def is_prime(n):
-    for i in range (2, n-1):
+    for i in range (2, int(n/2+1)):
         if (n % i == 0):
             return False
     return True
@@ -154,7 +154,7 @@ print(kth_prime(100))    # 541
 ################################################################################
 # Funkce is_prime ze cvičení 3.2.3
 def is_prime(n):
-    for i in range (2, n-1):
+    for i in range (2, int(n/2+1)):
         if (n % i == 0):
             return False
     return True
@@ -177,7 +177,7 @@ primes(10)     # 2 3 5 7 11 13 17 19 23 29
 ################################################################################
 # Funkce is_prime ze cvičení 3.2.3
 def is_prime(n):
-    for i in range (2, n-1):
+    for i in range (2, int(n/2+1)):
         if (n % i == 0):
             return False
     return True
