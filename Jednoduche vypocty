@@ -244,6 +244,7 @@ def power_factorization(n):
                 print(i, j, sep = "^", end = " ")
             else:
                 i += 1
+                j = 0
         else:
             i += 1
             j = 0
