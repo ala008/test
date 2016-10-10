@@ -225,7 +225,7 @@ factorization(360)      # 2 2 2 3 3 5
 factorization(1024)     # 2 2 2 2 2 2 2 2 2 2
 
 ################################################################################
-# 3.2.9 Rozklad na prvočísla - není doladěno
+# 3.2.9 Rozklad na prvočísla
 ################################################################################
 def is_prime(n):
     for i in range (2, int(n/2+1)):
@@ -241,14 +241,15 @@ def power_factorization(n):
             if ( n % i == 0):
                 n = n // i
                 j += 1 
-                print(i, j, sep = "^", end = " ")
             else:
+                if j > 0:
+                    print(i, j, sep = "^", end = " ")
                 i += 1
                 j = 0
         else:
             i += 1
             j = 0
-    print()
+    print(i, j, sep = "^")
 
 power_factorization(2)      # 2^1
 power_factorization(7)      # 7^1
