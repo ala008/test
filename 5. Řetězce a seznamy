@@ -88,3 +88,43 @@ def dummy(text, rubbish):
     
 print(dummy('pampeliska', 'XX'))
 # 'pXXaXXmXXpXXeXXlXXiXXsXXkXXa'
+
+##################################
+# 5.2.2. Zdvojení písmen
+##################################
+def duplication(text):
+    text1 = "" 
+    for i in range(len(text)):
+        text1 += text[i]*2
+    return text1
+
+print(duplication("PYTHON"))
+# PPYYTTHHOONN
+
+##################################
+# 5.2.3. Pozpátku
+##################################
+def reverse(text):
+    text1 = "" 
+    for i in range(len(text)):
+        text1 += text[len(text) - 1 - i] + " " 
+    return text1
+
+print(reverse('ONMEJATEJOLSEH'))
+# H E S L O J E T A J E M N O
+
+##################################
+# 5.2.4. Cenzura
+##################################
+def censorship(text):
+    text1 = "" 
+    for i in range(len(text)):
+        if i % 2 == 0:
+            text1 += text[i]
+        else:
+            text1 += "X"
+    return text1
+
+print(censorship("Vinnetou: Jsem krestan."))
+# VXnXeXoX:XJXeX XrXsXaX.
+
