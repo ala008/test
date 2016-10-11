@@ -76,3 +76,15 @@ def flatten(lists):
 
 print(flatten([[0, 2, 3], [1, 2, 3], [9, 10]]))
 # [0, 2, 3, 1, 2, 3, 9, 10]
+
+##################################
+# 5.2.1. Prokládání textu textem
+##################################
+def dummy(text, rubbish):
+    text1 = text[0] 
+    for i in range(1, len(text)):
+        text1 += rubbish + text[i]
+    return text1
+    
+print(dummy('pampeliska', 'XX'))
+# 'pXXaXXmXXpXXeXXlXXiXXsXXkXXa'
