@@ -1,0 +1,27 @@
+#########################################
+# 5.1.1. Součet, maximum a hledání
+#########################################
+
+def my_sum(numbers):
+    soucet = 0
+    for number in numbers:
+        soucet += number
+    return soucet
+        
+def my_max(numbers):
+    big = 0
+    for number in numbers: 
+        if big < number:
+            big = number
+    return big
+
+def my_in(x, array):
+    for member in array: 
+        if member == x:
+            return True
+    return False
+
+print(my_sum([6, 5, 11, 8]))    # 30
+print(my_max([6, 5, 11, 8]))    # 11
+print(my_in(5, [6, 5, 11, 8]))  # True
+print(my_in(4, [6, 5, 11, 8]))  # False
