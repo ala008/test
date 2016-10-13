@@ -169,6 +169,7 @@ def count_a(text):
 print(count_a('Liska Adelka'))
 # 3
 
+
 ###################################
 # 5.2.6. Znaky na stejných pozicích
 ###################################
@@ -186,3 +187,4 @@ string_intersection('ZIRAFA', 'KARAFA')
 # R A F A
 string_intersection('PES', 'KOCKA')
 # (prazdny retezec)
+
