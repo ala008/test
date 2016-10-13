@@ -158,3 +158,31 @@ print(censorship("Vinnetou: Jsem krestan."))
 # 5.2.5. Počet A
 ##################################
 
+
+def count_a(text):
+    cnt = 0
+    for x in text:
+        if x == "a" or x == "A":
+            cnt += 1
+    return cnt
+
+print(count_a('Liska Adelka'))
+# 3
+
+###################################
+# 5.2.6. Znaky na stejných pozicích
+###################################
+
+
+def string_intersection(left, right):
+    result = ""
+    for i in range(min(len(left), len(right))):
+        if left[i] == right[i]:
+            result += left[i] + " "
+
+    print(result)
+
+string_intersection('ZIRAFA', 'KARAFA')
+# R A F A
+string_intersection('PES', 'KOCKA')
+# (prazdny retezec)
