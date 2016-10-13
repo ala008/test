@@ -188,3 +188,31 @@ string_intersection('ZIRAFA', 'KARAFA')
 string_intersection('PES', 'KOCKA')
 # (prazdny retezec)
 
+
+###################################
+# 5.2.7. Rozdíl v počtu a
+###################################
+
+
+def count_a(text):
+    cnt = 0
+    for x in text:
+        if x == "a" or x == "A":
+            cnt += 1
+    return cnt
+
+
+def diff_a(left, right):
+    cnt_left = count_a(left)
+    cnt_right = count_a(right)
+    if cnt_left == cnt_right:
+        print("Both strings contain same number of 'a'/'A':", cnt_left)
+    elif cnt_left < cnt_right:
+        print("First string contains less 'a'/'A':", cnt_right - cnt_left)
+    else:
+        print("Second string contains less 'a'/'A':", cnt_left - cnt_right)
+
+diff_a("AstalaVistas", "Jehovista")
+# Second string contains less 'a'/'A': 3
+diff_a("", "")
+# Both strings contain same number of 'a'/'A'
