@@ -1,14 +1,11 @@
 ##################################
 # 5.1.1. Součet, maximum a hledání
 ##################################
-
-
 def my_sum(numbers):
     soucet = 0
     for number in numbers:
         soucet += number
     return soucet
-
 
 def my_max(numbers):
     big = 0
@@ -16,7 +13,6 @@ def my_max(numbers):
         if big < number:
             big = number
     return big
-
 
 def my_in(x, array):
     for member in array:
@@ -29,12 +25,9 @@ print(my_max([6, 5, 11, 8]))    # 11
 print(my_in(5, [6, 5, 11, 8]))  # True
 print(my_in(4, [6, 5, 11, 8]))  # False
 
-
 ################################
 # 5.1.2. Součin nenulových čísel
 ################################
-
-
 def nonzero_product(numbers):
     soucin = 1
     for number in numbers:
@@ -45,17 +38,13 @@ def nonzero_product(numbers):
 print(nonzero_product([0, 2, 3, 0, 0, 3]))    # 18
 print(nonzero_product([0, 0, 0, 0]))          # 1
 
-
 ################################################
 # 5.1.3. Modifikace vs. vytváření nového seznamu
 ################################################
-
-
 def double_all(numbers):
     for i in range(len(numbers)):
         numbers[i] *= 2
     return numbers
-
 
 def create_doubled(numbers):
     copy = list(numbers)
@@ -72,12 +61,9 @@ b = create_doubled(a)
 print(a)  # [1, 4, 2, 5]
 print(b)  # [2, 8, 4, 10]
 
-
 ##################################
 # 5.1.4. Zploštění
 ##################################
-
-
 def flatten(lists):
     seznam = []
     for i in lists:
@@ -88,12 +74,9 @@ def flatten(lists):
 print(flatten([[0, 2, 3], [1, 2, 3], [9, 10]]))
 # [0, 2, 3, 1, 2, 3, 9, 10]
 
-
 ##################################
 # 5.2.1. Prokládání textu textem
 ##################################
-
-
 def dummy(text, rubbish):
     text1 = ""
     for x in text:
@@ -103,12 +86,9 @@ def dummy(text, rubbish):
 print(dummy('pampeliska', 'XX'))
 # 'pXXaXXmXXpXXeXXlXXiXXsXXkXXa'
 
-
 ##################################
 # 5.2.2. Zdvojení písmen
 ##################################
-
-
 def duplication(text):
     text1 = "" 
     for x in text:
@@ -118,12 +98,9 @@ def duplication(text):
 print(duplication("PYTHON"))
 # PPYYTTHHOONN
 
-
 ##################################
 # 5.2.3. Pozpátku
 ##################################
-
-
 def reverse(text):
     text1 = ""
     for x in text:
@@ -133,12 +110,9 @@ def reverse(text):
 print(reverse('ONMEJATEJOLSEH'))
 # H E S L O J E T A J E M N O
 
-
 ##################################
 # 5.2.4. Cenzura
 ##################################
-
-
 def censorship(text):
     i = 1
     text1 = ""
@@ -153,12 +127,9 @@ def censorship(text):
 print(censorship("Vinnetou: Jsem krestan."))
 # VXnXeXoX:XJXeX XrXsXaX.
 
-
 ##################################
 # 5.2.5. Počet A
 ##################################
-
-
 def count_a(text):
     cnt = 0
     for x in text:
@@ -169,12 +140,9 @@ def count_a(text):
 print(count_a('Liska Adelka'))
 # 3
 
-
 ###################################
 # 5.2.6. Znaky na stejných pozicích
 ###################################
-
-
 def string_intersection(left, right):
     result = ""
     for i in range(min(len(left), len(right))):
@@ -188,19 +156,15 @@ string_intersection('ZIRAFA', 'KARAFA')
 string_intersection('PES', 'KOCKA')
 # (prazdny retezec)
 
-
 ###################################
 # 5.2.7. Rozdíl v počtu a
 ###################################
-
-
 def count_a(text):
     cnt = 0
     for x in text:
         if x == "a" or x == "A":
             cnt += 1
     return cnt
-
 
 def diff_a(left, right):
     cnt_left = count_a(left)
@@ -217,12 +181,9 @@ diff_a("AstalaVistas", "Jehovista")
 diff_a("", "")
 # Both strings contain same number of 'a'/'A'
 
-
 ##################
 # 5.2.8. Palindrom
 ##################
-
-
 def palindrom(text):
     text = text.replace(" ","")
     delka = len(text)
@@ -237,3 +198,15 @@ def palindrom(text):
     return True
 
 print(palindrom("k o b y l  a m a maly bok"))
+
+######################
+# 5.2.9. Hodnota slova
+######################
+def word_value(text):
+    hod = 0
+    for x in text:
+        hod += ord(x) - 64
+    return hod
+
+print(word_value("AHOJ"))
+# 34
