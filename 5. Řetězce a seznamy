@@ -216,3 +216,24 @@ diff_a("AstalaVistas", "Jehovista")
 # Second string contains less 'a'/'A': 3
 diff_a("", "")
 # Both strings contain same number of 'a'/'A'
+
+
+##################
+# 5.2.8. Palindrom
+##################
+
+
+def palindrom(text):
+    text = text.replace(" ","")
+    delka = len(text)
+    pulka = int(delka/2)
+    i = 0
+    j = delka - 1
+    while i < pulka:
+        if text[i] != text[j]:
+            return False
+        i += 1
+        j -= 1
+    return True
+
+print(palindrom("k o b y l  a m a maly bok"))
