@@ -4,7 +4,20 @@
 from random import randint
 
 def guess_number_human(upper_bound):
-    pass
+    tip, cnt = 0, 0
+    wanted = randint(1,upper_bound)
+    print(wanted)
+    while (tip != wanted):
+        cnt += 1
+        print('--- pokus c.', cnt, '---')
+        tip = int(input("Zadej svuj tip: "))
+        if tip < wanted:
+            print('Moje cislo je vetsi.')
+        elif tip > wanted:
+            print('Moje cislo je mensi.')
+        else:
+            print('Jo, to je ono!')
+
 
 # --- pokus c. 1 ---
 # Zadej svuj tip: 5
