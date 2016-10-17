@@ -234,3 +234,28 @@ def caesar(text, klic):
 
 print(caesar('zirafa', 3))
 # CLUDID
+
+
+#########################
+# 5.3.2. Vigenèrova šifra
+#########################
+def vigenere(text, klic):
+    text = text.upper()
+    klic = klic.upper()
+    sifra = ""
+    j = 0
+    klic_len = len(klic)
+    for letter in text:
+        if j >= klic_len:
+            j -= klic_len
+        letter = chr(ord(letter) + ord(klic[j]) - 65)
+        if letter > "Z":
+            letter = chr(ord(letter) - 26)
+        sifra += letter
+        # další písmeno v klíči 
+        j += 1
+
+    return sifra
+
+print(vigenere('pampeliska', 'klic'))
+# ZLUROWQUUL
