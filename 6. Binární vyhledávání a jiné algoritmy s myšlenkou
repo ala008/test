@@ -1,0 +1,18 @@
+##############################
+# 6.1.1. Hádání čísla člověkem
+##############################
+from random import randint
+
+def guess_number_human(upper_bound):
+    pass
+
+# --- pokus c. 1 ---
+# Zadej svuj tip: 5
+# Moje cislo je mensi.
+# --- pokus c. 2 ---
+# Zadej svuj tip: 3
+# Moje cislo je vetsi.
+# --- pokus c. 3 ---
+# Zadej svuj tip: 4
+# Jo, to je ono!
+guess_number_human(10)
