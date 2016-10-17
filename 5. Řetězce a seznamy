@@ -259,3 +259,23 @@ def vigenere(text, klic):
 
 print(vigenere('pampeliska', 'klic'))
 # ZLUROWQUUL
+
+############################
+# 5.3.3. Protřepat, nemíchat
+############################
+def tuple_reverse(text, n):
+    reverse = ""
+    word = "" 
+    i = 0
+    for letter in text:
+        if i == n:
+            i = 0
+            reverse = reverse + word
+            word = ""
+        word = letter + word
+        i += 1    
+    reverse = reverse + word
+    return reverse
+
+print(tuple_reverse('HESLOJETAJEMNO', 2))
+# SEHJOLATEMEJON
