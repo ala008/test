@@ -210,3 +210,27 @@ def word_value(text):
 
 print(word_value("AHOJ"))
 # 34
+
+########################
+# 5.3.1. Caesarova šifra
+########################
+def caesar(text, klic):
+    # uprava hodnoty posunuti - klice (musi byt mezi 0 a 25)
+    while klic >= 26:
+        klic -= 26
+    while klic < 0:
+        klic += 26
+
+    text = text.upper()
+    sifra = ""
+    for letter in text:
+        if letter >= "A" and letter <= "Z":
+            # sifrujeme jenom pismena A - Z (ostatni beze zmeny) 
+            letter = chr(ord(letter) + klic)
+            if letter > "Z":
+                letter = chr(ord(letter) - 26)
+        sifra += letter
+    return sifra
+
+print(caesar('zirafa', 3))
+# CLUDID
