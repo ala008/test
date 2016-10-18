@@ -29,3 +29,34 @@ def guess_number_human(upper_bound):
 # Zadej svuj tip: 4
 # Jo, to je ono!
 guess_number_human(10)
+
+###############################
+# 6.1.2. Hádání čísla počítačem
+###############################
+from random import randint
+
+def guess_number_pc(upper_bound):
+    print("Mysli si cislo od 1 do ", upper_bound, ".", sep="")
+    lower = 0 
+    upper = upper_bound + 1
+    result = 0
+    while result != 1:
+        tip = lower + (upper - lower) // 2
+        if upper - lower == 2:
+            break
+        question = "Je cislo " + str(tip) + " mensi (0), rovno (1), nebo vetsi (2) nez tvoje cislo?\n"
+        result = int(input(question))
+        if result == 0:
+            lower = tip
+        elif result == 2:
+            upper = tip
+
+    print("Tvoje cislo je ", tip, ".", sep = "")
+        
+# Mysli si cislo od 1 do 10.
+# Je cislo 5 mensi (0), rovno (1), nebo vetsi (2) nez tvoje cislo?
+# 2
+# Je cislo 2 mensi (0), rovno (1), nebo vetsi (2) nez tvoje cislo?
+# 2
+# Tvoje cislo je 1.
+guess_number_pc(10)
