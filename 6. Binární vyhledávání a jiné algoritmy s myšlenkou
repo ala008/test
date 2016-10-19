@@ -18,16 +18,6 @@ def guess_number_human(upper_bound):
         else:
             print('Jo, to je ono!')
 
-
-# --- pokus c. 1 ---
-# Zadej svuj tip: 5
-# Moje cislo je mensi.
-# --- pokus c. 2 ---
-# Zadej svuj tip: 3
-# Moje cislo je vetsi.
-# --- pokus c. 3 ---
-# Zadej svuj tip: 4
-# Jo, to je ono!
 guess_number_human(10)
 
 ###############################
@@ -52,11 +42,35 @@ def guess_number_pc(upper_bound):
             upper = tip
 
     print("Tvoje cislo je ", tip, ".", sep = "")
-        
-# Mysli si cislo od 1 do 10.
-# Je cislo 5 mensi (0), rovno (1), nebo vetsi (2) nez tvoje cislo?
-# 2
-# Je cislo 2 mensi (0), rovno (1), nebo vetsi (2) nez tvoje cislo?
-# 2
-# Tvoje cislo je 1.
+
 guess_number_pc(10)
+
+##########################################
+# 6.1.3. Hádání čísla: počítač vs. počítač
+##########################################
+from random import randint
+
+def guess_number_pc_pc(upper_bound):
+    wanted = randint(1,upper_bound)
+    print("A: Myslim si cislo od 1 do ", upper_bound, ".", sep="")
+    lower = 0 
+    upper = upper_bound + 1
+    cnt = 0
+    while 1 == 1:
+        cnt += 1
+        print('--- pokus c.', cnt, '---')        
+        tip = lower + (upper - lower) // 2
+        print("B: Tipuji ", tip)
+        if tip < wanted:
+            print('A: Moje cislo je vetsi.')
+            lower = tip
+        elif tip > wanted:
+            print('A: Moje cislo je mensi.')
+            upper = tip
+        else:
+            print('A; Jo, to je ono!')
+            break
+
+    print("Uhadnuto na", cnt, "pokusu")
+
+guess_number_pc_pc(10)
