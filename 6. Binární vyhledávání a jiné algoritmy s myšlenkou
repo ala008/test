@@ -96,3 +96,25 @@ def binary_search(needle, haystack):
 
 print(binary_search(5, [1, 2, 5, 8])) # True
 print(binary_search(4, [1, 2, 5, 8])) # False
+
+###################################
+# 6.2.2. Binární vyhledávání pozice
+###################################
+def binary_search_position(needle, haystack):
+    lower = -1
+    upper = len(haystack)
+    last_ind, ind = lower, upper
+    while 1 == 1:
+        ind = lower + (upper - lower) // 2
+        if last_ind == ind:
+            return -1
+        if needle == haystack[ind]:
+            return ind
+        if needle > haystack[ind]:
+            lower = ind
+        else:
+            upper = ind
+        last_ind = ind
+
+print(binary_search_position(5, [1, 2, 5, 8])) # 2
+print(binary_search_position(4, [1, 2, 5, 8])) # -1
