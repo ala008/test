@@ -75,3 +75,21 @@ def print_pascal(pascal):
         print(("{0: ^" + str(max_number_size * len(pascal[-1])) + "}").format(line))
 
 print_pascal(pascal(6))
+
+####################
+# 7.2.1. Bubble sort
+####################
+def bubble_sort(l):
+    n = len(l)
+    for i in range(n):
+        swapped = False
+        for j in range(n-1, i, -1):
+            if l[j] < l[j-1]:
+                l[j], l[j-1] = l[j-1], l[j]
+                swapped = True
+        if swapped == False:
+            break
+
+l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+bubble_sort(l)
+print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
