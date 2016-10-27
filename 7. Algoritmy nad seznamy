@@ -79,48 +79,65 @@ print_pascal(pascal(6))
 ####################
 # 7.2.1. Bubble sort
 ####################
-def bubble_sort(l):
+def bubble_sort(l, output = False):
     n = len(l)
+    poc_swap = 0
+    poc_test = 0
     for i in range(n):
         swapped = False
         for j in range(n-1, i, -1):
+            poc_test += 1
             if l[j] < l[j-1]:
                 l[j], l[j-1] = l[j-1], l[j]
                 swapped = True
+                poc_swap += 1
         if swapped == False:
             break
+    if output:
+        print("bubble:", poc_test, poc_swap)
 
 l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
-bubble_sort(l)
-print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+bubble_sort(l, True)
+print(l) # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
 
 ####################
 # 7.2.2. Select sort
 ####################
-def select_sort(l):
+def select_sort(l, output = False):
     n = len(l)
+    poc_swap = 0
+    poc_test = 0
     for i in range(n):
         k = i
         for j in range(i+1, n):
+            poc_test += 1
             if l[j] < l[k]:
                 k = j
         l[i], l[k] = l[k], l[i]
-
+        poc_swap += 1
+    if output:
+        print("select:", poc_test, poc_swap)
 
 l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
-select_sort(l)
+select_sort(l, True)
 print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
 
 ####################
 # 7.2.3. Insert sort
 ####################
-def insert_sort(l):
+def insert_sort(l, output = False):
     n = len(l)
+    poc_swap = 0
+    poc_test = 0
     for i in range (1,n):
         for k in range (i, 0, -1):
+            poc_test += 1
             if l[k] < l[k-1]:
+                poc_swap += 1
                 l[k], l[k-1] = l[k-1], l[k]
+    if output:
+        print("insert:", poc_test, poc_swap)
 
 l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
-insert_sort(l)
+insert_sort(l, True)
 print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
