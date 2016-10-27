@@ -79,6 +79,8 @@ print_pascal(pascal(6))
 ####################
 # 7.2.1. Bubble sort
 ####################
+from random import random, randint
+
 def bubble_sort(l, output = False):
     n = len(l)
     poc_swap = 0
@@ -96,13 +98,22 @@ def bubble_sort(l, output = False):
     if output:
         print("bubble:", poc_test, poc_swap)
 
-l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# bubble_sort(l)
+# print(l) # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+
+l = []
+for i in range(100):
+    l.append(randint(1,100))
+print(l)
 bubble_sort(l, True)
-print(l) # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+print(l)
 
 ####################
 # 7.2.2. Select sort
 ####################
+from random import random, randint
+
 def select_sort(l, output = False):
     n = len(l)
     poc_swap = 0
@@ -118,13 +129,22 @@ def select_sort(l, output = False):
     if output:
         print("select:", poc_test, poc_swap)
 
-l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# select_sort(l)
+# print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+
+l = []
+for i in range(100):
+    l.append(randint(1,100))
+print(l)
 select_sort(l, True)
-print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+print(l)
 
 ####################
 # 7.2.3. Insert sort
 ####################
+from random import random, randint
+
 def insert_sort(l, output = False):
     n = len(l)
     poc_swap = 0
@@ -138,6 +158,13 @@ def insert_sort(l, output = False):
     if output:
         print("insert:", poc_test, poc_swap)
 
-l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# l = [7, 6, 100, 3, 2, 11, -1, 10, 10, 42, 42, 42, 2, 13, 0, -5]
+# insert_sort(l)
+# print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+
+l = []
+for i in range(100):
+    l.append(randint(1,100))
+print(l)
 insert_sort(l, True)
-print(l)     # [-5, -1, 0, 2, 2, 3, 6, 7, 10, 10, 11, 13, 42, 42, 42, 100]
+print(l)
