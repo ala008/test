@@ -6,7 +6,7 @@ def triangle(n):
     seznam_2 = []
     for i in range(n):
         seznam_1.append(1)
-        seznam_2.append(seznam_1)
+        seznam_2.append(seznam_1[:])
     return seznam_2 
 print(triangle(0))     # []
 print(triangle(1))     # [[1]]
