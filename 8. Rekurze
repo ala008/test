@@ -28,3 +28,17 @@ print(sequence(0))     # 5
 print(sequence(1))     # 9
 print(sequence(2))     # 17
 print(sequence(3))     # 33
+
+####################################
+# 8.1.3. 8.1.3. Zašroubování žárovky
+####################################
+def screwing(n):
+    if n>0:
+        print("twist")
+        screwing(n-1)
+
+screwing(3)
+# Ocekavany vystup:
+# twist
+# twist
+# twist
