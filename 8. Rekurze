@@ -42,3 +42,17 @@ screwing(3)
 # twist
 # twist
 # twist
+
+#############################
+# 8.1.4. Součet seznamu čísel
+#############################
+def list_sum(numbers):
+    sum = 0
+    for element in numbers:
+        if type(element) == type([]): # or: if isinstance(element, list):
+            sum = sum + list_sum(element)
+        else:
+            sum = sum + element
+    return sum
+
+print(list_sum([1, 8, 2, 0, 4, 2]))  # 17
