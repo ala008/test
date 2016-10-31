@@ -29,9 +29,9 @@ print(sequence(1))     # 9
 print(sequence(2))     # 17
 print(sequence(3))     # 33
 
-####################################
-# 8.1.3. 8.1.3. Zašroubování žárovky
-####################################
+#############################
+# 8.1.3. Zašroubování žárovky
+#############################
 def screwing(n):
     if n>0:
         print("twist")
