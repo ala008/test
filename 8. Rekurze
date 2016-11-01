@@ -53,3 +53,23 @@ def list_sum(numbers):
     return sum
 
 print(list_sum([1, 8, 2, 0, 4, 2]))  # 17
+
+############################
+# 8.1.5. Binární vyhledávání
+############################
+def binary_search(value, numbers):
+    return binarySearch(numbers, value, 0, len(numbers)-1)
+
+def binarySearch(seznam, hodnota, vlevo, vpravo):
+    if vpravo < vlevo:
+        return False
+    stred = (vpravo + vlevo) // 2
+    if seznam[stred] == hodnota:
+        return True
+    if hodnota < seznam[stred]:
+        return binarySearch(seznam, hodnota, vlevo, stred - 1)
+    else:
+        return binarySearch(seznam, hodnota, stred + 1, vpravo)
+    
+print(binary_search(5, [1, 2, 5, 8]))  # True
+print(binary_search(4, [1, 2, 5, 8]))  # False
