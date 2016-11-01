@@ -48,11 +48,8 @@ screwing(3)
 #############################
 def list_sum(numbers):
     sum = 0
-    for element in numbers:
-        if type(element) == type([]): # or: if isinstance(element, list):
-            sum = sum + list_sum(element)
-        else:
-            sum = sum + element
+    if len(numbers)>0:
+        sum = sum + numbers[0] + list_sum(numbers[1:])
     return sum
 
 print(list_sum([1, 8, 2, 0, 4, 2]))  # 17
