@@ -189,3 +189,29 @@ def tree(length):
         julie.backward(length)
 
 tree(90)
+
+#######################
+# 8.3.3. Kochova vločka
+#######################
+from turtle import Turtle
+julie = Turtle()
+julie.speed(10)
+julie.up()
+julie.setposition(-190, 0)
+julie.down()
+
+# depth: pocet rekurzivnich zanoreni
+# size: sirka krivky
+def koch(depth=5, size=380.0):
+    if depth > 1:
+        koch(depth-1, size/3)
+        julie.left(60)
+        koch(depth-1, size/3)
+        julie.right(120)
+        koch(depth-1, size/3)
+        julie.left(60)
+        koch(depth-1, size/3)
+    else:
+        julie.forward(size)
+
+koch(5)
