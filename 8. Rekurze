@@ -163,3 +163,29 @@ def nested_squares(depth, length=180.0):
         nested_squares(depth-1, length/sqrt(2))
 
 nested_squares(8)
+
+##############
+# 8.3.2. Strom
+##############
+from turtle import Turtle
+julie = Turtle()
+julie.speed(10)
+julie.left(90)
+
+# length: delka kmenove cary
+def tree(length):
+    # ukoncovaci podminka
+    if length > 10:
+        julie.forward(length)
+        # leva vetev
+        julie.left(45)
+        nova_vetev = length*0.6
+        tree(nova_vetev)
+        # prava vetev
+        julie.right(90)
+        tree(nova_vetev)
+        # .. a vratime se na zacatek
+        julie.left(45)
+        julie.backward(length)
+
+tree(90)
