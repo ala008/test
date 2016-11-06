@@ -107,7 +107,7 @@ print(min_max([8, 4, 3, 5, 9, 2, 1, 7, 6]))  # (1, 9)
 ######################
 # 8.2.4. Rychlé řazení
 ######################
-# vraci serazene pole 'array' (samotne pole 'array' nemeni)
+# vraci serazene pole 'array'
 def quicksort(array):
     quick_sort(array, 0, len(array))
     return array
@@ -137,3 +137,24 @@ def quick_sort(pole, levy_index, pravy_index):
 
 print(quicksort([2, 7, 8, 1, 4, 5, 9, 3, 6]))
 # vystup: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+########################
+# 8.3.1. Vnořené čtverce
+########################
+from turtle import Turtle
+from math import sqrt
+julie = Turtle()
+julie.speed(10)
+
+# depth: kolik ctvercu vykreslit
+# length: delka strany nejvetsiho ctverce
+def nested_squares(depth, length=180.0):
+    if depth > 0:
+        for i in range(4):
+            julie.forward(length)
+            julie.left(90)
+        julie.forward(length/2)
+        julie.left(45)
+        nested_squares(depth-1, length/sqrt(2))
+
+nested_squares(8)
