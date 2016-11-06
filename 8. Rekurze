@@ -84,3 +84,22 @@ def hanoi(n, source, target, auxiliary):
         hanoi(n-1, auxiliary, target, source)
 
 hanoi(3, 'A', 'C', 'B')
+
+##########################
+# 8.2.3. Maximum a minimum
+##########################
+def min_max(numbers):
+    return maximum(numbers, 0, len(numbers)-1)
+
+def maximum(numbers, leftIndex, rightIndex):
+    if (leftIndex == rightIndex):
+        return numbers[leftIndex]
+    middle = (leftIndex + rightIndex) // 2
+    left = maximum(numbers, leftIndex, middle)
+    right = maximum(numbers, middle + 1, rightIndex)
+    if (left > right):
+        return left
+    else:
+        return right
+
+print(min_max([8, 4, 3, 5, 9, 2, 1, 7, 6]))  # (1, 9)
