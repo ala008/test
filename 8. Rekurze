@@ -145,6 +145,9 @@ from turtle import Turtle
 from math import sqrt
 julie = Turtle()
 julie.speed(10)
+julie.up()
+julie.setposition(-90, -90)
+julie.down()
 
 # depth: kolik ctvercu vykreslit
 # length: delka strany nejvetsiho ctverce
@@ -153,7 +156,9 @@ def nested_squares(depth, length=180.0):
         for i in range(4):
             julie.forward(length)
             julie.left(90)
+        julie.up()
         julie.forward(length/2)
+        julie.down()
         julie.left(45)
         nested_squares(depth-1, length/sqrt(2))
 
