@@ -103,3 +103,37 @@ def maximum(numbers, leftIndex, rightIndex):
         return right
 
 print(min_max([8, 4, 3, 5, 9, 2, 1, 7, 6]))  # (1, 9)
+
+######################
+# 8.2.4. Rychlé řazení
+######################
+# vraci serazene pole 'array' (samotne pole 'array' nemeni)
+def quicksort(array):
+    quick_sort(array, 0, len(array))
+    return array
+
+def prerovnej(pole, levy_index, pravy_index):
+    pivot = pole[pravy_index - 1]
+    # i je nejlevější nepřerovnaný prvek
+    i = levy_index
+    # j je aktuální probíraný prvek
+    for j in range(levy_index, pravy_index - 1):
+        if (pole[j] <= pivot):
+            # Prohodíme tyto dva prvky
+            (pole[i], pole[j]) = (pole[j], pole[i])
+            i += 1
+    # Dáme pivota na správné místo
+    (pole[pravy_index-1], pole[i]) = (pole[i], pole[pravy_index-1])
+    return i
+
+def quick_sort(pole, levy_index, pravy_index):
+    if (levy_index >= pravy_index):
+        return
+    # Přerovnáme úsek...
+    pivot = prerovnej(pole, levy_index, pravy_index)
+    # ... a zavoláme se rekurzivně na oba podúseky
+    quick_sort(pole, levy_index, pivot)
+    quick_sort(pole, pivot + 1, pravy_index)
+
+print(quicksort([2, 7, 8, 1, 4, 5, 9, 3, 6]))
+# vystup: [1, 2, 3, 4, 5, 6, 7, 8, 9]
