@@ -85,6 +85,42 @@ def hanoi(n, source, target, auxiliary):
 
 hanoi(3, 'A', 'C', 'B')
 
+###############################
+# 8.2.2. Hanojské věže graficky
+###############################
+odkud = [3,2,1]
+kam   = []
+pomoc = [] 
+
+def hanoi(n, source, target, auxiliary):
+    if n >= 1:
+        hanoi(n-1, source, auxiliary, target) 
+
+        print(source," -> ", target)
+        if source == 'A':
+            hodnota = odkud.pop()
+        elif source == 'B':
+            hodnota = pomoc.pop()
+        else:
+            hodnota = kam.pop()
+        if target == 'A':
+            odkud.append(hodnota)
+        elif target == 'B':
+            pomoc.append(hodnota)
+        else:
+            kam.append(hodnota)
+        print('A:',odkud)
+        print('B:',pomoc)
+        print('C:',kam)        
+
+        hanoi(n-1, auxiliary, target, source)
+
+print('A:',odkud)
+print('B:',pomoc)
+print('C:',kam)        
+
+hanoi(3, 'A', 'C', 'B')
+
 ##########################
 # 8.2.3. Maximum a minimum
 ##########################
