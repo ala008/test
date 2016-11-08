@@ -16,36 +16,43 @@ def show_state(state):
         print(j, end = ' ')
     print('\n')
 
+# tah pocitace
+def strategy(state, symbol):
+    cols = len(state[0])
+    move = randint(0, cols-1)
+    return move
+
 def tictactoe(rows, cols, human_starts=True):
     # vytvoreni hraciho planu
+    state1 = []
+    for i in range(cols):
+        state1.append(' ')
     state = []
     for i in range(rows):
-        state1 = []
-        for j in range(cols):
-            state1.append(' ')
-        state.append(state1)
+        state.append(state1[:])
     show_state(state)
 
-    # hraje hrac
-    print('Na tahu je hrac')
-    move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
-
-    for i in range(rows-1, -1, -1):
-        if state[i][move] == ' ':
-            state[i][move] = 'X'
+    while 1==1:
+        print('Na tahu je hrac')
+        move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
+        if move < 0:
             break
-    show_state(state)
 
-    # hraje pocitac
-    print('Na tahu je pocitac')
-    move = randint(0,cols-1)
-    print('Pocitac hraje do sloupce cislo ' + str(move))
+        for i in range(rows-1, -1, -1):
+            if state[i][move] == ' ':
+                state[i][move] = 'X'
+                break
+        show_state(state)
 
-    for i in range(rows-1, -1, -1):
-        if state[i][move] == ' ':
-            state[i][move] = 'O'
-            break    
-    show_state(state)
+        print('Na tahu je pocitac')
+        move = strategy(state, 'O')
+        print('Pocitac hraje do sloupce cislo ' + str(move))
 
-tictactoe(3,5)
+        for i in range(rows-1, -1, -1):
+            if state[i][move] == ' ':
+                state[i][move] = 'O'
+                break    
+        show_state(state)
+
+tictactoe(5,5)
 
