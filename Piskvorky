@@ -1,0 +1,26 @@
+def show_state(state):
+    cols = len(state[0])
+    for i in range(len(state)):
+        for j in range(cols):
+            print(state[i][j], end= ' ')
+        print()
+
+    for j in range(cols):
+        print('-', end = ' ')       
+    print()
+
+    for j in range(cols):
+        print(j+1, end = ' ')
+    print()
+
+def tictactoe(rows, cols, human_starts=True):
+    state = []
+    for i in range(rows):
+        state1 = []
+        for j in range(cols):
+            state1.append(' ')
+        state.append(state1)
+
+    show_state(state)
+
+tictactoe(3,5)
