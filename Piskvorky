@@ -1,3 +1,6 @@
+from random import randint
+
+# zobrazeni hraciho planu
 def show_state(state):
     cols = len(state[0])
     for i in range(len(state)):
@@ -10,17 +13,39 @@ def show_state(state):
     print()
 
     for j in range(cols):
-        print(j+1, end = ' ')
-    print()
+        print(j, end = ' ')
+    print('\n')
 
 def tictactoe(rows, cols, human_starts=True):
+    # vytvoreni hraciho planu
     state = []
     for i in range(rows):
         state1 = []
         for j in range(cols):
             state1.append(' ')
         state.append(state1)
+    show_state(state)
 
+    # hraje hrac
+    print('Na tahu je hrac')
+    move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
+
+    for i in range(rows-1, -1, -1):
+        if state[i][move] == ' ':
+            state[i][move] = 'X'
+            break
+    show_state(state)
+
+    # hraje pocitac
+    print('Na tahu je pocitac')
+    move = randint(0,cols-1)
+    print('Pocitac hraje do sloupce cislo ' + str(move))
+
+    for i in range(rows-1, -1, -1):
+        if state[i][move] == ' ':
+            state[i][move] = 'O'
+            break    
     show_state(state)
 
 tictactoe(3,5)
+
