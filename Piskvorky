@@ -1,6 +1,5 @@
 from random import randint
 
-# zobrazeni hraciho planu
 def show_state(state):
     cols = len(state[0])
     for i in range(len(state)):
@@ -16,14 +15,62 @@ def show_state(state):
         print(j, end = ' ')
     print('\n')
 
-# tah pocitace
 def strategy(state, symbol):
     cols = len(state[0])
     move = randint(0, cols-1)
     return move
 
-def tictactoe(rows, cols, human_starts=True):
-    # vytvoreni hraciho planu
+def konec(i, j, rows, cols, state):
+    symbol = state[i][j] 
+    i_inc = [1,0,1,1]
+    j_inc = [0,1,1,-1]
+    for k in range(4):
+        pocet = 1 
+        i1 = i
+        j1 = j
+        while True:
+            i1 += i_inc[k]
+            j1 += j_inc[k]
+            if i1 > -1 and j1 > -1 and i1 < rows and j1 < cols and \
+               state[i1][j1] == symbol:
+                pocet += 1
+            else:
+                break
+        i1 = i
+        j1 = j
+        while True:
+            i1 -= i_inc[k]
+            j1 -= j_inc[k] 
+            if i1 > -1 and j1 > -1 and i1 < rows and j1 < cols and \
+               state[i1][j1] == symbol:
+                pocet += 1
+            else:
+                break
+
+        if pocet >= 4:
+            return 1
+
+    return 0
+
+def kontrola(move, rows, cols, state, symbol):
+    if move < 0 or move >= cols:
+        print('Zadaný sloupec je mimo meze.')
+        return 0
+    for i in range(rows-1, -1, -1):
+        if state[i][move] == ' ':
+            state[i][move] = symbol
+            res = konec(i, move, rows, cols, state)
+            if res == 1:
+                return 1
+            else:
+                return 2
+
+    if symbol == 'X':
+        print('Zadaný sloupec je plný.')
+    return 0
+
+def tictactoe(rows, cols, human_starts = True):
+
     state1 = []
     for i in range(cols):
         state1.append(' ')
@@ -32,27 +79,46 @@ def tictactoe(rows, cols, human_starts=True):
         state.append(state1[:])
     show_state(state)
 
-    while 1==1:
-        print('Na tahu je hrac')
-        move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
-        if move < 0:
+    tah = 0
+    while True:
+        ############################
+        if human_starts:
+           print('Na tahu je hrac')
+           while True:
+               move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
+               res = kontrola(move, rows, cols, state, 'X')
+               if res != 0:
+                   break
+
+           tah += 1
+           show_state(state)
+           if res == 1:
+               print('Vitezi hrac')
+               break
+        else:
+           human_starts = True
+
+        if tah == rows*cols:
+            print('Konec hry - nelze tahnout')
             break
 
-        for i in range(rows-1, -1, -1):
-            if state[i][move] == ' ':
-                state[i][move] = 'X'
-                break
-        show_state(state)
-
+        ###########################
         print('Na tahu je pocitac')
-        move = strategy(state, 'O')
+        while True:
+            move = strategy(state, 'O')
+            res = kontrola(move, rows, cols, state, 'O')
+            if res != 0:
+                break
+
         print('Pocitac hraje do sloupce cislo ' + str(move))
-
-        for i in range(rows-1, -1, -1):
-            if state[i][move] == ' ':
-                state[i][move] = 'O'
-                break    
+        tah += 1
         show_state(state)
+        if res == 1:
+            print('Vitezi pocitac')
+            break
+        if tah == rows*cols:
+            print('Konec hry - nelze tahnout')
+            break
 
-tictactoe(5,5)
+tictactoe(5, 5)
 
