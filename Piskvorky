@@ -27,8 +27,40 @@ def show_state(state):
 
 # tah pocitace
 def strategy(state, symbol):
+    rows = len(state)
     cols = len(state[0])
-    move = randint(0, cols-1)
+
+    # vitezny tah
+    move = -1
+    for i in range(cols):
+        state1 = []
+        for j in range(rows):
+            state1.append(state[j][:])
+
+        res = kontrola(i, rows, cols, state1, 'O')
+        if res == 1:
+            move = i
+            break
+    if move != -1:
+        return move
+
+    # vitezny tah soupere
+    move = -1
+    for i in range(cols):
+        state1 = []
+        for j in range(rows):
+            state1.append(state[j][:])
+
+        res = kontrola(i, rows, cols, state1, 'X')
+        print(i, res, rows)
+        if res == 1:
+            print(state1)
+            move = i
+            break
+
+    if move < 0:
+        move = randint(0, cols-1)
+
     return move
 
 # test na konec hry
@@ -138,4 +170,6 @@ def tictactoe(rows, cols, human_starts = True):
             print('Konec hry - nelze tahnout')
             break
 
-tictactoe(11, 11)
+tictactoe(5, 6)
+
+
