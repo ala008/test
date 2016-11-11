@@ -1,5 +1,6 @@
 from random import randint
 
+# zobrazeni hraci plochy
 def show_state(state):
     cols = len(state[0])
     for i in range(len(state)):
@@ -11,15 +12,26 @@ def show_state(state):
         print('-', end = ' ')       
     print()
 
-    for j in range(cols):
+    for j in range(min(cols, 10)):
         print(j, end = ' ')
-    print('\n')
+    if cols > 9: 
+        for j in range(10, cols):
+            print(j // 10, end = ' ')
+    print()
 
+    if cols > 9:
+        print('  '*10, end = '')
+        for j in range(10, cols):
+            print(j % 10, end = ' ')
+        print()
+
+# tah pocitace
 def strategy(state, symbol):
     cols = len(state[0])
     move = randint(0, cols-1)
     return move
 
+# test na konec hry
 def konec(i, j, rows, cols, state):
     symbol = state[i][j] 
     i_inc = [1,0,1,1]
@@ -52,6 +64,7 @@ def konec(i, j, rows, cols, state):
 
     return 0
 
+# kontrola tahu
 def kontrola(move, rows, cols, state, symbol):
     if move < 0 or move >= cols:
         print('Zadaný sloupec je mimo meze.')
@@ -71,6 +84,7 @@ def kontrola(move, rows, cols, state, symbol):
 
 def tictactoe(rows, cols, human_starts = True):
 
+    # vytvoreni hraci plochy
     state1 = []
     for i in range(cols):
         state1.append(' ')
@@ -85,10 +99,14 @@ def tictactoe(rows, cols, human_starts = True):
         if human_starts:
            print('Na tahu je hrac')
            while True:
-               move = int(input('Do jakeho sloupce chces hrat? (do 0 do ' + str(cols-1) + ')? '))
-               res = kontrola(move, rows, cols, state, 'X')
-               if res != 0:
-                   break
+               move1 = input('Do jakeho sloupce chces hrat? (od 0 do ' + str(cols-1) + ')? ')
+               if move1.isdigit():
+                   move = int(move1)
+                   res = kontrola(move, rows, cols, state, 'X')
+                   if res != 0:
+                       break
+               else:
+                    print('Musite zadat kladne cele cislo')
 
            tah += 1
            show_state(state)
@@ -120,5 +138,4 @@ def tictactoe(rows, cols, human_starts = True):
             print('Konec hry - nelze tahnout')
             break
 
-tictactoe(5, 5)
-
+tictactoe(11, 11)
