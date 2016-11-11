@@ -27,3 +27,25 @@ def game(n):
 
 print(game(1))
 print(game(10))
+
+######################
+# 9.2.2. Horký brambor
+######################
+from collections import deque
+
+def hot_potato(namelist, k):
+    queue = deque()
+    for name in namelist:
+        queue.append(name)
+    print(queue)
+
+    while True:
+        queue.rotate( -k )
+        print(queue, ' out -> ', queue.pop())
+        if len(queue) == 1:
+            break
+
+    print('win -> ', queue[0])
+
+hot_potato(["Bill","David","Susan","Jane","Kent","Brad","Sam"],7)
+
