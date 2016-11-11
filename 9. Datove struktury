@@ -1,0 +1,29 @@
+###############################
+# 9.2.1. Má mě rád, nemá mě rád
+###############################
+from random import randint
+from collections import deque
+
+def game(n):
+    queue = deque([])
+    for i in range(n):
+        kvet = randint(1,4)
+        queue.append(kvet)
+    print(queue)
+
+    ma_me_rad = True 
+
+    while True:
+        kvet = queue.popleft()
+        kvet -= 1 
+        ma_me_rad = not ma_me_rad
+        if kvet > 0:
+            queue.append(kvet)
+        print(queue)
+        if len(queue) == 0:
+            break
+
+    return ma_me_rad
+
+print(game(1))
+print(game(10))
