@@ -51,3 +51,45 @@ point.x = 10
 print(point.x)       # 10
 print(distance (Point(1, 2), Point(3, 5)))   # 3.60555127546
 
+#################
+# 10.1.4. Kniha #
+#################
+class Book(object):
+
+    def __init__(self, nazev, autor, isbn, cena):
+        self.nazev = nazev
+        self.autor = autor
+        self.isbn = isbn
+        self.cena = cena
+
+def print_info(book):
+    sirka = 10
+    frm = "{:" + str(sirka) + "}"
+    print(frm.format("name:"), book.nazev)
+    print(frm.format("author:"), book.autor)
+    print(frm.format("isbn:"), book.isbn)
+    print(frm.format("price:"), "${:d}".format(book.cena))
+    print()
+
+def draw_cover(book):
+    sirka = max(len(book.nazev),len(book.autor)) + 8
+    frm   = "{:^" + str(sirka) + "}"
+    print("+" + "-"*sirka + "+")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + frm.format(book.nazev) + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + frm.format(book.autor) + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")
+    print("|" + " "*sirka + "|")    
+    print("+" + "-"*sirka + "+")
+    print()
+
+cookbook = Book('Cooking for Geeks', 'Jeff Potter', '0596805888', 22)
+print_info(cookbook)
+draw_cover(cookbook)
