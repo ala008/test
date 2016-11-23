@@ -93,3 +93,32 @@ def draw_cover(book):
 cookbook = Book('Cooking for Geeks', 'Jeff Potter', '0596805888', 22)
 print_info(cookbook)
 draw_cover(cookbook)
+
+################
+# 10.2.1. Kruh #
+################
+import math
+
+class Circle(object):
+
+    def __init__(self, center, radius):
+        # inicializace objektu
+        self.center = center
+        self.radius = radius
+
+    def get_perimeter(self):
+        # Vraci obvod kruhu
+        return 2 * math.pi * self.radius
+
+    def get_area(self):
+        # Vraci obsah kruhu
+        return math.pi * self.radius**2
+
+    def __str__(self):
+        # Vraci informacni retezec
+        return "Circle at " + str(self.center) + " with radius " + \
+               str(self.radius)
+
+circle = Circle((-130, -130), 100)
+print(circle)  # Circle at (-130, -130) with radius 100
+print(circle.get_area())  # 31415.926535897932
