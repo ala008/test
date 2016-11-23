@@ -122,3 +122,53 @@ class Circle(object):
 circle = Circle((-130, -130), 100)
 print(circle)  # Circle at (-130, -130) with radius 100
 print(circle.get_area())  # 31415.926535897932
+
+#################
+# 10.2.2. Želvy #
+#################
+import math
+
+class Turtle(object):
+    def __init__(self):
+        self.x = 0
+        self.y = 0
+        self.direction = 0
+        self.lines = []
+
+    def left(self, angle):
+        self.direction -= angle
+
+    def right(self, angle):
+        self.direction += angle
+
+    def forward(self, distance):
+        nx = self.x + distance * math.cos(self.direction * math.pi / 180)
+        ny = self.y + distance * math.sin(self.direction * math.pi / 180)
+
+        self.lines.append((self.x, self.y, nx, ny))
+        self.x, self.y = nx, ny
+
+    def get_lines_svg(self):
+        svg = ""
+        for x1, y1, x2, y2 in self.lines:
+            svg += """\t<line x1='{}' y1='{}' x2='{}' y2='{}'
+                style='stroke: black; stroke-width:2' />\n""".format(x1, y1, x2, y2)
+        return svg
+
+    def save(self, filename):
+        with open(filename, "w") as f:
+            f.write('<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">\n')
+            f.write(self.get_lines_svg())
+            f.write("\n</svg>")
+
+zelva = Turtle()
+
+zelva.forward(20)
+zelva.right(90)
+zelva.forward(20)
+zelva.right(90)
+zelva.forward(20)
+zelva.right(90)
+zelva.forward(20)
+
+zelva.save("zelva.svg")
