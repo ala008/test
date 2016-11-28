@@ -153,10 +153,6 @@ class Turtle(object):
 
     def polygon(self, length, number):
         # vykresleni mnohouhelnika
-        # nahodna pocatecni pozice
-        self.x = randint(0,500)
-        self.y = randint(0,500)        
-
         angle = 360.0 / float(number)
         self.forward(length)
         for i in range(number):
@@ -164,15 +160,20 @@ class Turtle(object):
             self.forward(length)
 
     def set_color(self, color):
+        # nastaveni barvy zelvy
         self.color = color
 
     def random_step(self, distance):
-        # nahodny smer 
+        # posun zelvy o danou vzdalenost nahodnym smerem
         direction = randint(0, 360) 
-        self.x = self.x + distance * math.cos(direction * math.pi / 180)
-        self.y = self.y + distance * math.sin(direction * math.pi / 180)        
+        nx = self.x + distance * math.cos(direction * math.pi / 180)
+        ny = self.y + distance * math.sin(direction * math.pi / 180)      
+
+        self.lines.append((self.x, self.y, nx, ny, self.color))
+        self.x, self.y = nx, ny
 
     def turn_towards(self, other_turtle):
+        # smer ke druhe zelva
         self.direction = math.atan2(other_turtle.y - self.y,
                          other_turtle.x - self.x) / math.pi * 180
 
@@ -190,24 +191,31 @@ class Turtle(object):
             f.write("\n</svg>")
 
 def chase(steps = 10):
+    # prvni zelva bude modra
     zelva1 = Turtle()
     zelva1.set_color("blue")
+    # druha zelva bude cervena
     zelva2 = Turtle()
     zelva2.set_color("red")
 
+    # druha zelva honi prvni 
     for i in range(steps):
-        zelva1.turn_towards(zelva2)
-        zelva1.forward(50)
-        zelva2.left(randint(0,360))
-        zelva2.forward(50)
+        # pohyb nahodnym smerem o 50
+        zelva1.random_step(50)
+        # pohyb k druhe zelve o 25
+        zelva2.turn_towards(zelva1)
+        zelva2.forward(25)
 
-    with open("zelva1.svg", "w") as f:
+
+    with open("zelva12.svg", "w") as f:
         f.write('<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">\n')
         f.write(zelva1.get_lines_svg())
         f.write(zelva2.get_lines_svg())
         f.write("\n</svg>")
 
-chase(20)
+chase(10)
+
+
 
 
 
