@@ -172,6 +172,10 @@ class Turtle(object):
         self.x = self.x + distance * math.cos(direction * math.pi / 180)
         self.y = self.y + distance * math.sin(direction * math.pi / 180)        
 
+    def turn_towards(self, other_turtle):
+        self.direction = math.atan2(other_turtle.y - self.y,
+                         other_turtle.x - self.x) / math.pi * 180
+
     def get_lines_svg(self):
         svg = ""
         for x1, y1, x2, y2, color in self.lines:
@@ -185,13 +189,25 @@ class Turtle(object):
             f.write(self.get_lines_svg())
             f.write("\n</svg>")
 
-zelva = Turtle()
+def chase(steps = 10):
+    zelva1 = Turtle()
+    zelva1.set_color("blue")
+    zelva2 = Turtle()
+    zelva2.set_color("red")
 
-zelva.set_color("red")
-zelva.polygon(150,4)
-zelva.set_color("blue")
-zelva.random_step(100)
-zelva.polygon(100,8)
+    for i in range(steps):
+        zelva1.turn_towards(zelva2)
+        zelva1.forward(50)
+        zelva2.left(randint(0,360))
+        zelva2.forward(50)
 
-zelva.save("zelva.svg")
+    with open("zelva1.svg", "w") as f:
+        f.write('<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">\n')
+        f.write(zelva1.get_lines_svg())
+        f.write(zelva2.get_lines_svg())
+        f.write("\n</svg>")
+
+chase(20)
+
+
 
