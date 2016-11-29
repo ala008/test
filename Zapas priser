@@ -1,0 +1,72 @@
+# --------------------------------------------------------
+#  Utok
+# --------------------------------------------------------
+
+class Attack(object):
+    """Reprezentace jednoho typu utoku.
+
+    Attributes:
+        name: (str) Jmeno utoku.
+        power: (int) Prumerny pocet bodu zivota, ktere utok zasazenemu ubira.
+        accuracy: (int) Pravdepodobnost, ze utok zasahne protivnika (1-100).
+        difficulty: (int) Kolik bodu energie vyzaduje provedeni utoku.
+    """
+    def __init__(self, name, power, accuracy, difficulty):
+        self.name = name
+        self.power = power
+        self.accuracy = accuracy
+        self.difficulty = difficulty
+
+# --------------------------------------------------------
+#   Prisera
+# --------------------------------------------------------
+
+class Creature(object):
+    """Reprezentace jednoduche prisery.
+
+    Attributes:
+        name: (str) Jmeno prisery.
+        full_health: (int) Pocet bodu zivota (health points) pri plnem zdravi.
+        full_energy: (int) Pocet bodu energie (energy points) pri plne energii.
+        speed: (int) Prirozene cislo vyjadrujici rychlost prisery.
+        attacks: Kolekce utoku prisery (AttackCollection nebo seznam).
+        health: (int) Aktualni zdravi prisery (0-full_health).
+        energy: (int) Aktualni energie prisery (0-full_energy).
+    """
+    def __init__(self, full_health, full_energy, speed, attacks, health, energy):
+        self.full_health = full_health
+        self.full_energy = full_energy
+        self.speed = speed
+        self.attacks = attacks
+        self.health = health
+        self.energy = energy
+
+# --------------------------------------------------------
+#  Zapas
+# --------------------------------------------------------
+
+class Match(object):
+    """Trida reprezentujici stav zapasu mezi dvema priserami.
+
+    Attributes:
+      creatures: Seznam dvou zapasicich priser.
+      attacker: Prisera, ktera v aktualnim kole utoci.
+      defender: Prisera, na kterou je aktualne utoceno.
+    """
+    def __init__(self, creatures, attacker, defender):
+        self.creatures = creatures
+        self.attacker = attacker
+        self.defender = defender
+
+# --------------------------------------------------------
+#  Main Function
+# --------------------------------------------------------
+
+def main():
+    # Ve funkci main vytvorte kolekci (seznam) utoku a priser,
+    # nechejte vybrat mod hry a priseru/prisery,
+    # vytvorte novy zapas (instance tridy Match)
+    # a spuste ho (napr. match.run()).
+    pass
+
+main()
