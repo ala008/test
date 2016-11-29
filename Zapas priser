@@ -33,13 +33,19 @@ class Creature(object):
         health: (int) Aktualni zdravi prisery (0-full_health).
         energy: (int) Aktualni energie prisery (0-full_energy).
     """
-    def __init__(self, full_health, full_energy, speed, attacks, health, energy):
+    def __init__(self, name, full_health, full_energy, speed, attacks, \
+                 health, energy):
+        self.name = name
         self.full_health = full_health
         self.full_energy = full_energy
         self.speed = speed
         self.attacks = attacks
         self.health = health
         self.energy = energy
+
+    def zobraz(self)
+        print(self.name, self.health, self.full_health, self.energy, \
+              self.full_energy)
 
 # --------------------------------------------------------
 #  Zapas
@@ -67,6 +73,10 @@ def main():
     # nechejte vybrat mod hry a priseru/prisery,
     # vytvorte novy zapas (instance tridy Match)
     # a spuste ho (napr. match.run()).
-    pass
-
+    utok = Attack('attack',10,20,30)
+    utok.zobraz()
+    prisera1 = Creature("creature",1,2,3,utok,4,5)
+    prisera1.zobraz()
+     
 main()
+
