@@ -1,7 +1,8 @@
+from random import randint
+
 # --------------------------------------------------------
 #  Utok
 # --------------------------------------------------------
-
 class Attack(object):
     """Reprezentace jednoho typu utoku.
 
@@ -17,10 +18,14 @@ class Attack(object):
         self.accuracy = accuracy
         self.difficulty = difficulty
 
+    def attack_display(self, num):
+        print('[{}] {:12}     {:3}      {:3}        {:3}'.format(num, \
+              self.name, self.power, self.accuracy, self.difficulty))
+
+
 # --------------------------------------------------------
 #   Prisera
 # --------------------------------------------------------
-
 class Creature(object):
     """Reprezentace jednoduche prisery.
 
@@ -33,8 +38,8 @@ class Creature(object):
         health: (int) Aktualni zdravi prisery (0-full_health).
         energy: (int) Aktualni energie prisery (0-full_energy).
     """
-    def __init__(self, name, full_health, full_energy, speed, attacks, \
-                 health, energy):
+    def __init__(self, name, full_health, full_energy, speed, \
+                 attacks, health, energy):
         self.name = name
         self.full_health = full_health
         self.full_energy = full_energy
@@ -43,14 +48,17 @@ class Creature(object):
         self.health = health
         self.energy = energy
 
-    def zobraz(self)
-        print(self.name, self.health, self.full_health, self.energy, \
-              self.full_energy)
+    def creature_display(self, num):
+        print('[{}] {:10}    {:3}    {:3}    {:3}'.format(num, \
+              self.name, self.full_health, self.full_energy, self.speed))
+
+    def creature_actual(self):
+        print('{}: health={}/{}, energy={}/{}'.format( self.name, \
+              self.health, self.full_health, self.energy, self.full_energy))
 
 # --------------------------------------------------------
 #  Zapas
 # --------------------------------------------------------
-
 class Match(object):
     """Trida reprezentujici stav zapasu mezi dvema priserami.
 
@@ -65,18 +73,140 @@ class Match(object):
         self.defender = defender
 
 # --------------------------------------------------------
+#  Kolekce příšer
+# --------------------------------------------------------    
+class CreatureCollection(object):
+    def __init__(self):
+        self.creatures = []
+
+    def add_creature(self, creature):
+        self.creatures.append(creature)
+
+    def get_creature(self, number):
+        return self.creatures[number]
+
+    def display_all_creatures(self):
+        print('-----------------------------------')
+        print('    name       health energy  speed')
+        i = 0
+        for creature in self.creatures:
+            i += 1
+            creature.creature_display(i)
+        print('-----------------------------------')
+
+# --------------------------------------------------------
+#  Kolekce útoků
+# --------------------------------------------------------    
+class AttackCollection(object):
+    def __init__(self):
+        self.attacks = []
+
+    def add_attack(self, attack):
+        self.attacks.append(attack)
+
+    def get_attack(self, number):
+        return self.attacks[number]
+
+    def display_all_attacks(self):
+        print('--------------------------------------------')
+        print('    name           power accuracy difficulty')
+        i = 0
+        for attack in self.attacks:
+            i += 1
+            attack.attack_display(i)
+        print('--------------------------------------------')
+
+# --------------------------------------------------------
 #  Main Function
 # --------------------------------------------------------
-
 def main():
     # Ve funkci main vytvorte kolekci (seznam) utoku a priser,
     # nechejte vybrat mod hry a priseru/prisery,
     # vytvorte novy zapas (instance tridy Match)
     # a spuste ho (napr. match.run()).
-    utok = Attack('attack',10,20,30)
-    utok.zobraz()
-    prisera1 = Creature("creature",1,2,3,utok,4,5)
-    prisera1.zobraz()
-     
-main()
 
+    mega_punch = Attack( 'mega punch', 70, 75, 40)
+    seismic_toss = Attack( 'seismic toss', 110, 70, 60)
+    leer = Attack( 'leer', 0, 50, 0)
+    punch = Attack( 'punch', 15, 90, 5)
+    wing_attack = Attack( 'wing attack', 30, 90, 15)
+    cut = Attack( 'cut', 15, 90, 5)
+    flamethrower = Attack( 'flamethrower', 30, 90, 15)
+
+    attacks = AttackCollection()
+    attacks.add_attack(mega_punch)
+    attacks.add_attack(seismic_toss)
+    attacks.add_attack(leer)
+    attacks.add_attack(punch)
+    machamp = Creature('Machamp', 180, 140, 90, attacks, 180, 140)
+
+    attacks = AttackCollection()
+    attacks.add_attack(mega_punch)
+    attacks.add_attack(seismic_toss)
+    attacks.add_attack(leer)
+    attacks.add_attack(punch)
+    flareon = Creature('Flareon', 140, 140, 110, attacks, 140, 140)
+
+    attacks = AttackCollection()
+    attacks.add_attack(wing_attack)
+    attacks.add_attack(seismic_toss)
+    attacks.add_attack(cut)
+    attacks.add_attack(flamethrower)
+    charizard = Creature('Charizard', 200, 120, 100, attacks, 200, 120)
+
+    creatures = CreatureCollection()
+    players   = CreatureCollection()
+    creatures.add_creature(machamp)
+    creatures.add_creature(flareon)
+    creatures.add_creature(charizard)
+
+    print('-'*30)
+    print('[1] singleplayer')
+    print('[2] multiplayer')
+    print('-'*30)
+
+    while True:
+        mode = input('Select game mode: ')
+        if mode == '1' or mode == '2':
+            break
+        else:
+            print('Answer 1 or 2.')
+
+    print('\nPlayer 1')
+    creatures.display_all_creatures()
+
+    while True:
+        number = input('Select creature: ')
+        if number == '1' or number == '2' or number == '3':
+            player1 = int(number)
+            break
+        else:
+            print('Invalid selection.')
+    players.add_creature(creatures.get_creature(player1-1))
+
+    if mode == '1':
+        print('\nPlayer 2')
+        while True:
+            player2 = randint(1, 3)
+            if player1 != player2:
+                break
+    else:
+        print('\nPlayer 2')
+        creatures.display_all_creatures()
+
+        while True:
+            number = input('Select creature: ')
+            if number == '1' or number == '2' or number == '3':
+                player2 = int(number)
+                if player1 == player2:
+                    print('Player 1 choose this creature.')
+                else:
+                    break
+            else:
+                print('Invalid selection.')
+
+    players.add_creature(creatures.get_creature(player2-1))
+
+    players.display_all_creatures()
+
+main()
