@@ -9,3 +9,16 @@ def is_integer(string):
 print(is_integer("42"))         # True
 print(is_integer("-42"))        # True
 print(is_integer("4a2"))        # False
+
+###############
+# 11.2.2. Čísla
+###############
+import re
+
+def is_number(string):
+    return bool(re.match(r'[+-]?\d+(.\d+|)$', string))
+
+print(is_number("42.01"))      # True
+print(is_number("-42"))        # True
+print(is_number("4.b"))        # False
+print(is_number("42."))        # False
