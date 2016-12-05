@@ -1,3 +1,18 @@
+#########################
+# 11.1.1. Zpracování jmen
+#########################
+def process_names(input_filename, output_filename):
+    input_file = open(input_filename, "r")  
+    lines = input_file.readlines()
+    input_file.close()
+
+    output_file = open(output_filename, "w")
+    for line in lines:
+        output_file.write(str(line[0].upper()) + str(line[1:].lower()))
+    output_file.close() 
+
+process_names('NAMES.txt', 'names1.txt')
+
 ####################
 # 11.2.1. Celá čísla
 ####################
