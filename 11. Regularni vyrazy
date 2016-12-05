@@ -37,3 +37,33 @@ print(is_number("42.01"))      # True
 print(is_number("-42"))        # True
 print(is_number("4.b"))        # False
 print(is_number("42."))        # False
+
+###############
+# 11.2.3. Jména
+###############
+import re
+
+# vypise radky, ktere splnuji zadany vzor
+def search_in_file(pattern, file_name):
+    with open(file_name) as f:
+        lines = f.read().split('\n')        # nacteme vsechny radky do seznamu
+        for line in lines:                  # prochazime radky a hledame shodu
+            if re.search(pattern, line):
+                print(line)
+
+search_in_file(r'.*', 'names.txt')
+
+print("\n1. SEARCHING: oo")
+search_in_file(r'.*oo.*', 'names.txt')
+
+print("\n2. SEARCHING: 3x o")
+search_in_file(r'.*o.*o.*o.*', 'names.txt')
+
+print("\n3. SEARCHING: pouze samohlasky")
+search_in_file(r'^[aeiouyAEIOUY]*$', 'names.txt')
+
+print("\n4. SEARCHING: pouze souhlasky")
+search_in_file(r'^[^aeiouyAEIOUY]*$', 'names.txt')
+
+print("\n5. SEARCHING: začíná B nebo D, končí w nebo z")
+search_in_file(r'^[BD].*[wz]$', 'names.txt')
