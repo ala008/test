@@ -53,17 +53,20 @@ def search_in_file(pattern, file_name):
 
 search_in_file(r'.*', 'names.txt')
 
-print("\n1. SEARCHING: oo")
+print("\n1 - obsahuje oo")
 search_in_file(r'.*oo.*', 'names.txt')
 
-print("\n2. SEARCHING: 3x o")
+print("\n2 - alespon 3 znaky o")
 search_in_file(r'.*o.*o.*o.*', 'names.txt')
 
-print("\n3. SEARCHING: pouze samohlasky")
+print("\n3 - pouze samohlasky")
 search_in_file(r'^[aeiouyAEIOUY]*$', 'names.txt')
 
-print("\n4. SEARCHING: pouze souhlasky")
+print("\n4 - pouze souhlasky")
 search_in_file(r'^[^aeiouyAEIOUY]*$', 'names.txt')
 
-print("\n5. SEARCHING: začíná B nebo D, končí w nebo z")
+print("\n5 - začíná B nebo D, končí w nebo z")
 search_in_file(r'^[BD].*[wz]$', 'names.txt')
+
+print("\n6 - obsahuje bud inf nebo rec")
+search_in_file(r'(inf|rec)', 'names.txt')
