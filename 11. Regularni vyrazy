@@ -60,13 +60,26 @@ print("\n2 - alespon 3 znaky o")
 search_in_file(r'.*o.*o.*o.*', 'names.txt')
 
 print("\n3 - pouze samohlasky")
-search_in_file(r'^[aeiouyAEIOUY]*$', 'names.txt')
+search_in_file(r'^[aeiouy]*$', 'names.txt')
 
 print("\n4 - pouze souhlasky")
-search_in_file(r'^[^aeiouyAEIOUY]*$', 'names.txt')
+search_in_file(r'^[^aeiouy]*$', 'names.txt')
 
 print("\n5 - začíná B nebo D, končí w nebo z")
 search_in_file(r'^[BD].*[wz]$', 'names.txt')
 
-print("\n6 - obsahuje bud inf nebo rec")
-search_in_file(r'(inf|rec)', 'names.txt')
+print("\n6 - obsahují buď inf nebo rec")
+search_in_file(r'inf|rec', 'names.txt')
+
+print("\n7 - kromě prvního a posledního písmene obsahují pouze samohlásky a mají přesně 5 písmen")
+search_in_file(r'^\S[aeiouy]{3}\S$', 'names.txt')
+
+print("\n8 - začínají a končí na A a mají nejvýše 4 písmena")
+search_in_file(r'^A\S{0,2}A$', 'names.txt')
+
+print("\n9 - začínají na N nebo M a obsahují alespoň 5 samohlásek")
+search_in_file(r'^[NM](.*[aeiouy]){4,}', 'names.txt')
+
+# neni hotovo
+print("\n10 - kromě a můžou obsahovat nejvýše 2 jiná písmena, což ale můžou být jedině l, m nebo n")
+search_in_file(r'^a*[lmn]{0,2}a*$', 'names.txt')
