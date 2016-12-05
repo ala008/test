@@ -1,0 +1,11 @@
+####################
+# 11.2.1. Celá čísla
+####################
+import re
+
+def is_integer(string):
+    return re.match(r'[+-]?\d+$', string)
+
+print(is_integer("42"))         # True
+print(is_integer("-42"))        # True
+print(is_integer("4a2"))        # False
