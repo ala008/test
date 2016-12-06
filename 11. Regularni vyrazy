@@ -80,6 +80,5 @@ search_in_file(r'^A\S{0,2}A$', 'names.txt')
 print("\n9 - začínají na N nebo M a obsahují alespoň 5 samohlásek")
 search_in_file(r'^[NM](.*[aeiouy]){4,}', 'names.txt')
 
-# neni hotovo
 print("\n10 - kromě a můžou obsahovat nejvýše 2 jiná písmena, což ale můžou být jedině l, m nebo n")
-search_in_file(r'^a*[lmn]{0,2}a*$', 'names.txt')
+search_in_file(r'^a*[lmn]{0,1}a*[lmn]{0,1}a*$', 'names.txt')
