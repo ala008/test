@@ -82,3 +82,27 @@ search_in_file(r'^[NM](.*[aeiouy]){4,}', 'names.txt')
 
 print("\n10 - kromě a můžou obsahovat nejvýše 2 jiná písmena, což ale můžou být jedině l, m nebo n")
 search_in_file(r'^a*[lmn]?a*[lmn]?a*$', 'names.txt')
+
+################################
+# Pocet pismen za jinym pismenem
+################################
+import re, codecs 
+
+def letter_frequency(file):
+    with open(file, encoding="utf-8") as my_file:
+        word_dict = {}
+        
+        for line in my_file.readlines():
+            wordList = re.sub("[^\w]", " ", line).split()
+            for word in wordList:
+                word = word.upper()
+                for i in range(len(word)-1):
+                    letters = word[i] + word[i+1]
+                    if letters in word_dict:
+                        word_dict[letters] += 1
+                    else:
+                        word_dict[letters] = 1
+
+    print(word_dict)
+
+letter_frequency("devatero_pohadek.txt")
