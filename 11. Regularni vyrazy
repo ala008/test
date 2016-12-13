@@ -97,12 +97,19 @@ def letter_frequency(file):
             for word in wordList:
                 word = word.upper()
                 for i in range(len(word)-1):
-                    letters = word[i] + word[i+1]
-                    if letters in word_dict:
-                        word_dict[letters] += 1
+                    let1 = word[i]
+                    let2 = word[i+1]
+                    if let1 not in word_dict:
+                        word_dict[let1] = {}
+                    if let2 in word_dict[let1]:
+                        word_dict[let1][let2] += 1
                     else:
-                        word_dict[letters] = 1
+                        word_dict[let1][let2] = 1
 
-    print(word_dict)
+    for let1 in sorted(word_dict):
+        list1 = word_dict[let1]
+        for let2 in sorted(list1, key = list1.get, reverse = True)[:10]:
+            print(let1 + let2, word_dict[let1][let2], sep = "(", end = "x),")
+        print()    
 
 letter_frequency("devatero_pohadek.txt")
