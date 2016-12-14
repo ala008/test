@@ -1,0 +1,36 @@
+################
+# 12.1.0 Kolecko
+################
+from PIL import Image
+
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+# Zjisti, zda je zadany bod uvnitr kruhu o danem polomeru, jehoz stred
+# je uprostred ctvercoveho obrazku.
+def in_circle(size, radius, x, y):
+    return (x - size / 2) ** 2 + (y - size / 2) ** 2 < radius ** 2
+
+
+def circle(size=150, radius=50):
+    # Vytvorime objekt pro manipulaci s obrazkem
+    im = Image.new("RGB", (size, size))
+    # Prochazime vsechny pixely naseho obrazku a kontrolujeme, zda lezi
+    # v kruhu
+    for x in range(size):
+        for y in range(size):
+            if in_circle(size, radius, x, y):
+                # Pixel na souradnicich (x, y) obarvime na cerno.
+                im.putpixel((x, y), BLACK)
+            else:
+                # Pixel na souradnicich (x, y) obarvime na bilo.
+                im.putpixel((x, y), WHITE)
+    # obrazek si muzeme zobrazit
+    im.show()
+    # nebo jej muzeme ulozit do souboru
+    im.save("demo_circle.png")
+
+
+# Vykresli kruh o polomeru 50 na bilem ctverci o strane 150.
+circle()
