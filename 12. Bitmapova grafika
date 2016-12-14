@@ -34,3 +34,40 @@ def circle(size=150, radius=50):
 
 # Vykresli kruh o polomeru 50 na bilem ctverci o strane 150.
 circle()
+
+################
+# 12.1.1 Ctverec
+################
+from PIL import Image
+
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+
+
+# Zjisti, zda je zadany bod uvnitr ctverce o dane strane, jehoz stred
+# je uprostred ctvercoveho obrazku.
+def in_square(size, a, x, y):
+    return abs(x - size / 2) < a and abs(y - size / 2) < a
+
+
+def square(size=250, a=70):
+    # Vytvorime objekt pro manipulaci s obrazkem
+    im = Image.new("RGB", (size, size))
+    # Prochazime vsechny pixely naseho obrazku a kontrolujeme, zda lezi
+    # v kruhu
+    for x in range(size):
+        for y in range(size):
+            if in_square(size, a, x, y):
+                # Pixel na souradnicich (x, y) obarvime na cerno.
+                im.putpixel((x, y), BLACK)
+            else:
+                # Pixel na souradnicich (x, y) obarvime na bilo.
+                im.putpixel((x, y), WHITE)
+    # obrazek si muzeme zobrazit
+    im.show()
+    # nebo jej muzeme ulozit do souboru
+    # im.save("demo_square.png")
+
+
+# Vykresli cerny ctverec o strane 70 na bilem ctverci o strane 250.
+square()
