@@ -1,6 +1,6 @@
-################
-# 12.1.0 Kolecko
-################
+##################
+# 12.1.0 Kolecko #
+##################
 from PIL import Image
 
 
@@ -35,9 +35,9 @@ def circle(size=150, radius=50):
 # Vykresli kruh o polomeru 50 na bilem ctverci o strane 150.
 circle()
 
-################
-# 12.1.1 Ctverec
-################
+##################
+# 12.1.1 Ctverec #
+##################
 from PIL import Image
 
 BLACK = (0, 0, 0)
@@ -72,9 +72,9 @@ def square(size=250, a=70):
 # Vykresli cerny ctverec o strane 70 na bilem ctverci o strane 250.
 square()
 
-##########################
-# 12.1.10. Vlny a čtverec
-##########################
+###########################
+# 12.1.10. Vlny a čtverec #
+###########################
 from PIL import Image
 import math
 
