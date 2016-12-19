@@ -71,3 +71,26 @@ def square(size=250, a=70):
 
 # Vykresli cerny ctverec o strane 70 na bilem ctverci o strane 250.
 square()
+
+##########################
+# 12.1.10. Vlny a čtverec
+##########################
+from PIL import Image
+import math
+
+def in_square(size, a, x, y):
+    return abs(x - size / 2) < a and abs(y - size / 2) < a
+
+def waves(size, k, a):
+    im = Image.new("RGB", (size, size))
+    for x in range(size):
+        for y in range(size):
+            distance = math.sqrt((x - size // 2) ** 2 + (y - size // 2) ** 2)
+            if in_square(size, a/2, x, y):
+                value = 255-(int(math.cos(distance*k/50) * 128) + 128)
+            else:
+                value = 255-(int(math.sin(distance*k/50) * 128) + 128)
+            im.putpixel((x, y), (value, value, value))
+    im.show()
+
+waves(500, 3, 300)
