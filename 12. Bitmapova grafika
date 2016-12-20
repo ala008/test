@@ -123,3 +123,40 @@ for x in range(width):
         im1.putpixel((x, y), (r1//poc, g1//poc, b1//poc))
 
 im1.show()
+
+##################################
+# varianta 2 s grafickým filtrem #
+##################################
+from PIL import Image
+
+im = Image.open("Bitmap.jpg").convert("RGB")
+width, height = im.size
+
+# grafický filtr 3x3
+matrix = [[1, 2, 1],
+          [2, 4, 2],
+          [1, 2, 1]]
+
+im1 = Image.new("RGB", (width, height))
+
+for x in range(width):
+    for y in range(0,height):
+        r1, g1, b1, poc = 0, 0, 0, 0
+        for i in range(len(matrix)):
+            for j in range(len(matrix[0])):
+                vaha = matrix[i][j]
+                if vaha == 0:
+                    continue
+                x1 = x + i - 1
+                y1 = y + j - 1
+                if x1 >= 0 and x1 < width and y1 >= 0 and y1 < height: 
+                    r, g, b = im.getpixel((x1, y1))
+                    r1 += r*vaha
+                    g1 += g*vaha
+                    b1 += b*vaha
+                    poc += vaha
+        if poc == 0: # aby se nedelilo nulou 
+            poc = 1
+        im1.putpixel((x, y), (r1//poc, g1//poc, b1//poc))
+
+im1.show()
