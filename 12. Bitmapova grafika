@@ -54,7 +54,7 @@ def square(size=250, a=70):
     # Vytvorime objekt pro manipulaci s obrazkem
     im = Image.new("RGB", (size, size))
     # Prochazime vsechny pixely naseho obrazku a kontrolujeme, zda lezi
-    # v kruhu
+    # ve ctverci
     for x in range(size):
         for y in range(size):
             if in_square(size, a, x, y):
@@ -94,6 +94,27 @@ def waves(size, k, a):
     im.show()
 
 waves(500, 3, 300)
+
+########################
+# 12.3.1. Hledej v modré
+########################
+from PIL import Image
+
+im = Image.open("bitmapova_grafika_cipher_1.png").convert("RGB")
+width, height = im.size
+
+im1 = Image.new("RGB", (width, height))
+
+for x in range(width):
+    for y in range(height):
+        r, g, b = im.getpixel((x, y))
+        if b > 0:
+            b = 255
+            r = 0
+            g = 0
+        im1.putpixel((x, y), (r, g, b))
+
+im1.show()
 
 #####################
 # Rozmlzeni obrazku #
